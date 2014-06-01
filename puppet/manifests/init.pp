@@ -10,5 +10,5 @@ class { 'php5::install': }
 class { 'mysql::install': }
 class { 'wordpress::install': }
 class { 'phpmyadmin::install': }
-class { 'phpqa::install': }
+include phpqa
 include envato_wordpress_toolkit

@@ -1,1 +1,1 @@
-include phpqa::install
+include phpqa
