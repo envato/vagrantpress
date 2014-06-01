@@ -1,7 +1,7 @@
 # Install https://github.com/envato/envato-wordpress-toolkit
 class envato_wordpress_toolkit {
 
-  require git::install
+  require git
   require wordpress::install
 
   $plugins_directory = '/vagrant/wordpress/wp-content/plugins'

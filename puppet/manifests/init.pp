@@ -3,7 +3,7 @@ exec { 'apt_update':
   path    => '/usr/bin'
 }
 
-class { 'git::install': }
+include git
 class { 'subversion::install': }
 include apache2
 class { 'php5::install': }

@@ -1,7 +1,7 @@
 #Install the PHP Quality Assurance Toolchain
 class phpqa {
-  require git::install
-  require php5::install
+  require git
+  require php5
 
   exec {'pear install phpunit':
     command => '/usr/bin/pear install --alldeps pear.phpunit.de/PHPUnit',
