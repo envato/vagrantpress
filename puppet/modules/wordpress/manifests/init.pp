@@ -1,11 +1,11 @@
 # Install latest Wordpress
 
-class wordpress::install {
+class wordpress {
 
   # Create the Wordpress database
   exec { 'create-database':
     unless  => '/usr/bin/mysql -u root -pvagrant wordpress',
-    command => '/usr/bin/mysql -u root -pvagrant --execute=\'create database wordpress\'',
+    command => '/usr/bin/mysql -u root -pvagrant --execute="create database wordpress"',
   }
 
   exec { 'create-user':
@@ -15,8 +15,7 @@ class wordpress::install {
 
   # Get a new copy of the latest wordpress release
   # FILE TO DOWNLOAD: http://wordpress.org/latest.tar.gz
-
-  exec { 'download-wordpress': #tee hee
+  exec { 'download-wordpress':
     command => '/usr/bin/wget http://wordpress.org/latest.tar.gz',
     cwd     => '/vagrant/',
     creates => '/vagrant/latest.tar.gz'
@@ -43,11 +42,11 @@ class wordpress::install {
   file { '/vagrant/wordpress/wp-config.php':
     source => 'puppet:///modules/wordpress/wp-config.php'
   }
-  
-   # Create the Wordpress Unit Tests database
+
+  # Create the Wordpress Unit Tests database
   exec { 'create-tests-database':
     unless  => '/usr/bin/mysql -u root -pvagrant wp_tests',
-    command => '/usr/bin/mysql -u root -pvagrant --execute=\'create database wp_tests\'',
+    command => '/usr/bin/mysql -u root -pvagrant --execute="create database wp_tests"',
   }
 
   exec { 'create-tests-user':
