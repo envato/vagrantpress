@@ -4,7 +4,7 @@ exec { 'apt_update':
 }
 
 include git
-class { 'subversion::install': }
+include subversion
 include apache2
 include php5
 class { 'mysql::install': }
