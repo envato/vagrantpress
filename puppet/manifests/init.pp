@@ -8,7 +8,7 @@ include subversion
 include apache2
 include php5
 class { 'mysql::install': }
-class { 'wordpress::install': }
+include wordpress
 include phpmyadmin
 include phpqa
 include envato_wordpress_toolkit

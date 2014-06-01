@@ -2,7 +2,7 @@
 class envato_wordpress_toolkit {
 
   require git
-  require wordpress::install
+  require wordpress
 
   $plugins_directory = '/vagrant/wordpress/wp-content/plugins'
   $plugin_name = 'envato-wordpress-toolkit'
