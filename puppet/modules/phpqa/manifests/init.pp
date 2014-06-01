@@ -1,6 +1,8 @@
 #Install the PHP Quality Assurance Toolchain
 
 class phpqa::install{
+  require php5::install
+
 	exec {"pear install phpunit":
 	  command => "/usr/bin/pear install --alldeps pear.phpunit.de/PHPUnit",
 	  creates => '/usr/bin/phpunit',
@@ -35,13 +37,17 @@ class phpqa::install{
 	  require => Exec['pear update-channels']
 	}
 	
-	# install WordPress Coding Standard sniffs
-	# http:////github.com/WordPress-Coding-Standards/WordPress-Coding-Standards
-	exec { "Install WP phpcs sniffs":
-		command => "/usr/bin/git clone git://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git $(pear config-get php_dir)/PHP/CodeSniffer/Standards/WordPress",
-		require => Exec['pear update-channels', 'pear install phpcs']
-	}
-	
+        # install WordPress Coding Standard sniffs
+        $coding_standards_dir = '/usr/share/php/PHP/CodeSniffer/Standards'
+        $wp_sniffs_dir = "${coding_standards_dir}/WordPress"
+        $wp_sniffs_repo = 'https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards'
+
+        exec { 'Install WP phpcs sniffs':
+          command => "/usr/bin/git clone ${wp_sniffs_repo} ${wp_sniffs_dir}",
+          creates => $wp_sniffs_dir,
+          require => Exec['pear install phpcs'],
+        }
+
 	# install phpdepend
 	exec {"pear install pdepend":
 	  command => "/usr/bin/pear install --alldeps pear.pdepend.org/PHP_Depend-beta",
