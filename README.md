@@ -1,6 +1,6 @@
 # VagrantPress
 
-*VagrantPress* is a packaged development environment for developing WordPress themes and modules.  
+*VagrantPress* is a packaged development environment for developing WordPress themes and modules.
 I initially created this project to aid in developing child modules for a WordPress blog.
 
 # What's Installed
@@ -26,7 +26,7 @@ I initially created this project to aid in developing child modules for a WordPr
 
 ## Getting Started
 
-This is a fairly simple project to get up and running.  
+This is a fairly simple project to get up and running.
 The procedure for starting up a working WordPress is as follows:
 
 1. Clone the project.  (There’s only master branch.)
