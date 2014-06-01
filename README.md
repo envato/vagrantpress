@@ -7,6 +7,7 @@ I initially created this project to aid in developing child modules for a WordPr
 
 + Ubuntu Precise (12.04)
 + WordPress 3.9.1 running Twenty Twelve theme.
++ WordPress Toolkit for Envato Marketplace hosted items
 + Mysql
 + Php
 + Phpmyadmin
