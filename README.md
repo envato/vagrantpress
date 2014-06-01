@@ -6,7 +6,7 @@ I initially created this project to aid in developing child modules for a WordPr
 # What's Installed
 
 + Ubuntu Precise (12.04)
-+ WordPress 3.8
++ WordPress 3.9.1 running Twenty Twelve theme.
 + Mysql
 + Php
 + Phpmyadmin
