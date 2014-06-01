@@ -5,7 +5,7 @@ exec { 'apt_update':
 
 class { 'git::install': }
 class { 'subversion::install': }
-class { 'apache2::install': }
+include apache2
 class { 'php5::install': }
 class { 'mysql::install': }
 class { 'wordpress::install': }
