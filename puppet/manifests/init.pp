@@ -7,7 +7,7 @@ include git
 include subversion
 include apache2
 include php5
-class { 'mysql::install': }
+include mysql
 include wordpress
 include phpmyadmin
 include phpqa

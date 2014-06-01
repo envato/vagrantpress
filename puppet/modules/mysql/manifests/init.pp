@@ -1,25 +1,24 @@
 #Install MySQL
 
-class mysql::install {
+class mysql {
 
   $password = 'vagrant'
 
   package { [
-      'mysql-client',
-      'mysql-server',
-    ]:
+    'mysql-client',
+    'mysql-server',
+  ]:
     ensure => installed,
   }
 
   exec { 'Set MySQL server\'s root password':
-    subscribe   => [
+    require     => [
       Package['mysql-server'],
       Package['mysql-client'],
-    ],
+      ],
     refreshonly => true,
     unless      => "mysqladmin -uroot -p${password} status",
     path        => '/bin:/usr/bin',
     command     => "mysqladmin -uroot password ${password}",
   }
-
 }
