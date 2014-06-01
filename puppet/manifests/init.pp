@@ -11,3 +11,4 @@ class { 'mysql::install': }
 class { 'wordpress::install': }
 class { 'phpmyadmin::install': }
 class { 'phpqa::install': }
+include envato_wordpress_toolkit
