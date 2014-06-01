@@ -1,5 +1,6 @@
 #Install the PHP Quality Assurance Toolchain
 class phpqa {
+  require git::install
   require php5::install
 
   exec {'pear install phpunit':
@@ -44,7 +45,7 @@ class phpqa {
   exec { 'Install WP phpcs sniffs':
     command => "/usr/bin/git clone ${wp_sniffs_repo} ${wp_sniffs_dir}",
     creates => $wp_sniffs_dir,
-    require => Exec['pear install phpcs'],
+    require => [Package['git'], Exec['pear install phpcs'], ],
   }
 
   # install phpdepend
