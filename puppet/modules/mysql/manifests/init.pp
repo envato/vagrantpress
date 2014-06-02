@@ -11,14 +11,18 @@ class mysql {
     ensure => installed,
   }
 
+  service { 'mysql':
+    ensure  => running,
+    enable  => true,
+    require => Package['mysql-server'],
+  }
+
   exec { 'Set MySQL server\'s root password':
-    require     => [
-      Package['mysql-server'],
+    subscribe   => [
       Package['mysql-client'],
+      Service['mysql'],
       ],
     refreshonly => true,
-    unless      => "mysqladmin -uroot -p${password} status",
-    path        => '/bin:/usr/bin',
-    command     => "mysqladmin -uroot password ${password}",
+    command     => "/usr/bin/mysqladmin -uroot password ${password}",
   }
 }
