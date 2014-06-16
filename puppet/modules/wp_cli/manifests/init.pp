@@ -2,18 +2,20 @@
 
 class wp_cli {
 
-  exec { "wp_cli_source":
-    command => "/usr/bin/wget https://github.com/wp-cli/builds/blob/gh-pages/deb/php-wpcli_0.15.0_all.deb",
-    cwd => "/tmp/",
-    creates => "/tmp/php-wpcli_0.15.0_all.deb",
-    before => Package['wp_cli']
+  $package_filename = 'php-wpcli_0.15.0_all.deb'
+  $package_path = "/tmp/${package_filename}"
+  $package_url = "https://github.com/wp-cli/builds/blob/gh-pages/deb/${package_filename}"
+
+  exec { 'wp_cli_source':
+    command => "/usr/bin/wget ${package_url} -o ${package_path}",
+    creates => $package_path,
   }
 
   package { 'wp_cli':
-    require  => File['/tmp/php-wpcli_0.15.0_all.deb'],
+    ensure   => installed,
     provider => dpkg,
-    ensure => installed,
-    source => "/tmp/php-wpcli_0.15.0_all.deb"
+    require  => Exec['wp_cli_source'],
+    source   => $package_path,
   }
 
 }
