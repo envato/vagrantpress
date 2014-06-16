@@ -4,7 +4,7 @@ class wp_cli {
 
   $package_filename = 'php-wpcli_0.15.0_all.deb'
   $package_path = "/tmp/${package_filename}"
-  $package_url = "https://github.com/wp-cli/builds/blob/gh-pages/deb/${package_filename}"
+  $package_url = "https://github.com/wp-cli/builds/raw/gh-pages/deb/${package_filename}"
 
   exec { 'wp_cli_source':
     command => "/usr/bin/wget ${package_url} -o ${package_path}",
