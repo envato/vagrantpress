@@ -6,8 +6,8 @@ class wp_cli {
   $package_path = "/tmp/${package_filename}"
   $package_url = "https://github.com/wp-cli/builds/raw/gh-pages/deb/${package_filename}"
 
-  exec { 'wp_cli_source':
-    command => "/usr/bin/wget ${package_url} -o ${package_path}",
+  exec { 'download package':
+    command => "/usr/bin/wget ${package_url} -O ${package_path}",
     creates => $package_path,
   }
 
