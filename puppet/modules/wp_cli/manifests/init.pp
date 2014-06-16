@@ -11,10 +11,10 @@ class wp_cli {
     creates => $package_path,
   }
 
-  package { 'wp_cli':
+  package { 'install package':
     ensure   => installed,
     provider => dpkg,
-    require  => Exec['wp_cli_source'],
+    require  => Exec['download package'],
     source   => $package_path,
   }
 
