@@ -12,3 +12,4 @@ include wordpress
 include phpmyadmin
 include phpqa
 include envato_wordpress_toolkit
+include wp_cli
