@@ -2,7 +2,7 @@
 
 class wp_cli {
 
-  $package_filename = 'php-wpcli_0.15.0_all.deb'
+  $package_filename = 'php-wpcli_0.15.0ubuntu1_all.deb'
   $package_path = "/tmp/${package_filename}"
   $package_url = "https://github.com/wp-cli/builds/raw/gh-pages/deb/${package_filename}"
 
